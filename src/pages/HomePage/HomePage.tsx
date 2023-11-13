@@ -1,4 +1,3 @@
-import MaterialIcon from "../../common/MaterialIcon";
 import Hero from "./components/Hero";
 
 export default function HomePage() {
