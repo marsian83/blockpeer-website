@@ -50,7 +50,7 @@ export default function Navbar() {
         <NavDropdown.Container title="Features">
           <FeaturesDropdown />
         </NavDropdown.Container>
-        <NavItem to="/about-us">About Us</NavItem>
+        <NavItem to="/about">About Us</NavItem>
         <NavItem to="/pricing">Pricing</NavItem>
         <NavItem to="/blog">Blog</NavItem>
       </div>
@@ -65,7 +65,7 @@ export default function Navbar() {
 function FeaturesDropdown() {
   return (
     <NavDropdown.Body>
-      <NavDropdown.Section title="Pol">
+      <NavDropdown.Section title="Features for all">
         <NavDropdown.Item
           link="/"
           icon="passKey"
@@ -141,7 +141,7 @@ function NavDropdownContainer(props: NavDropdownContainerProps) {
   useClickOutside(ref, () => setOpen(false));
 
   return (
-    <div className="" ref={ref}>
+    <div ref={ref}>
       <button
         className={twMerge(
           "flex items-center gap-x-1 duration-200 px-5 py-1",
@@ -204,7 +204,7 @@ function NavDropdownItem(props: NavDropdownItemProps) {
       className="w-[30vw] flex items-center gap-x-4 duration-200 hover:bg-secondary py-3 px-4 rounded-md hover:bg-opacity-20"
       to={props.link}
     >
-      <div className="border border-front border-opacity-30 p-2 rounded">
+      <div className="border border-front border-opacity-30 p-2 rounded relative">
         <Icon icon={props.icon} className="text-3xl" />
       </div>
       <div className="flex flex-col gap-y-1">
