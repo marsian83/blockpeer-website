@@ -6,31 +6,43 @@ import { twMerge } from "tailwind-merge";
 const items = [
   {
     title: "A Company with Integrity",
+    imgUrl:
+      "https://images.unsplash.com/photo-1603201667141-5a2d4c673378?q=80&w=2392&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content:
       "BlockPeer operates as a private company with a public vision. By steering clear of investor funding, we've maintained the freedom to prioritize customer welfare over short-term profits. This independence fuels our unconventional problem-solving approach, empowering us to think differently. With over 15,000 employees and 100 million users worldwide, our commitment to this vision has yielded extraordinary results. Our dedication to integrity extends beyond business; it's a commitment to ethical practices, transparency, and building a lasting positive impact on the crypto and financial landscape.",
   },
   {
     title: "Your Trusted Partner",
+    imgUrl:
+      "https://images.unsplash.com/photo-1579389083078-4e7018379f7e?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content:
       "At BlockPeer, we believe that software should be a solution, not a problem. We refuse to lock you into multi-year contracts or employ pushy sales tactics. Our products are available à la carte or as suites, offering flexible payment options to suit every budget. Our commitment to transparency goes beyond just pricing; it's ingrained in our culture and reflected in our privacy policy. We understand the value of trust in a partnership, and that's why we aim to be your trusted partner in navigating the dynamic world of crypto accounting and finance.",
   },
   {
     title: "Privacy, the Cornerstone",
+    imgUrl:
+      "https://plus.unsplash.com/premium_photo-1668473366952-45f06fbf6492?q=80&w=2232&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content:
       "Privacy is the cornerstone of our philosophy at BlockPeer. We firmly believe in a common-sense approach to protecting user data. Placing our users before profits is not just a statement; it's our guiding principle. We've made a pledge to never display ads within our platform, not even in the free editions. Selling user information to third parties is strictly off-limits. By enforcing a ban on third-party trackers across our websites, we ensure that your business data remains exclusively yours. Our commitment to privacy is not just a feature; it's a fundamental aspect of our identity.",
   },
   {
     title: "Respecting Your Data Rights",
+    imgUrl:
+      "https://images.unsplash.com/photo-1573167507387-6b4b98cb7c13?q=80&w=2338&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content:
       "At BlockPeer, we have no interest in compromising your privacy for quick gains. Every individual, regardless of their location, deserves control over their data. We don't need laws and regulations to tell us that; it's an inherent commitment to doing what's right. Respecting your data rights is not just a policy for us; it's a fundamental value that guides every decision we make. We believe that users should have complete control and ownership of their data, and we strive to uphold this principle in every aspect of our platform.",
   },
   {
     title: "A Holistic Business Solution",
+    imgUrl:
+      "https://images.unsplash.com/photo-1498409785966-ab341407de6e?q=80&w=2362&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content:
       "Choosing BlockPeer means more than adopting a product; it's embracing the operating system for business. Developed over a decade of engineering and design effort, BlockPeer offers over 55 deeply integrated apps for web and mobile. Whether you need a singular solution or a comprehensive platform, we've got you covered. Our commitment to providing a holistic business solution goes beyond just features. It's about empowering businesses with the tools they need to thrive in the ever-evolving landscape of crypto accounting and finance. And if we haven't built it yet, rest assured, it's on our roadmap, as we constantly strive to innovate and enhance our offerings.",
   },
   {
     title: "Community-Centric Values",
+    imgUrl:
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2344&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     content:
       "As a global company, we understand the importance of good citizenship. Giving back is ingrained in our culture. From providing subscription relief to businesses affected by natural disasters to constructing solar farms that offset our carbon footprint, we actively seek ways to uplift the communities we operate in. Our community-centric values are not just a reflection of corporate social responsibility; they are a testament to our commitment to making a positive impact on the world. We believe that businesses have a responsibility to contribute to the well-being of the communities they serve, and we take pride in actively pursuing initiatives that bring about positive change.",
   },
@@ -39,9 +51,11 @@ const items = [
 export default function Vision() {
   const [legendTop, setLegendTop] = useState(0);
   const [index, setIndex] = useState(0);
+  const [spacerSize, setSpacerSize] = useState(0);
 
   const sectRef = useRef() as React.MutableRefObject<HTMLElement>;
   const legendRef = useRef() as React.MutableRefObject<HTMLDivElement>;
+  const spacerRef = useRef() as React.MutableRefObject<HTMLDivElement>;
   const initialPos = useCoords(sectRef);
 
   function scrollHandler() {
@@ -67,6 +81,16 @@ export default function Vision() {
         )
       )
     );
+    setSpacerSize(
+      linearMap(
+        window.scrollY,
+        {
+          from: initialPos.top - 1 * window.innerHeight,
+          to: initialPos.top + 0.2 * window.innerHeight,
+        },
+        { from: 0.8 * window.innerHeight, to: 0 }
+      )
+    );
   }
 
   useEffect(() => {
@@ -78,6 +102,8 @@ export default function Vision() {
 
   return (
     <section ref={sectRef} className="py-20 p-page">
+      <div ref={spacerRef} style={{ height: spacerSize }} />
+
       <h1 className="text-3xl font-semibold text-center mb-10">Our Vision</h1>
 
       <div className="flex">
@@ -112,8 +138,16 @@ export default function Vision() {
           {items.map((item, key) => (
             <div
               key={key}
-              className="h-screen flex flex-col justify-center gap-y-20"
+              className="h-screen flex flex-col px-10 justify-center border-b border-primary border-opacity-40"
             >
+              <img
+                className="aspect-video object-cover"
+                src={item.imgUrl}
+                alt="image"
+              />
+              <h4 className="font-lato font-semibold text-xl text-center mb-4 mt-8">
+                {item.title}
+              </h4>
               <p>{item.content}</p>
             </div>
           ))}
