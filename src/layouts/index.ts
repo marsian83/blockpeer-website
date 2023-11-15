@@ -1,4 +1,4 @@
-import Default from "./default";
+import Default from "./Default";
 
 const Layout = { Default };
 
