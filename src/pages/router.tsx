@@ -8,6 +8,7 @@ import HomePage from "./HomePage/HomePage";
 import ErrorPage from "./ErrorPage/ErrorPage";
 import PricingPage from "./PricingPage/PricingPage";
 import AboutPage from "./AboutPage/AboutPage";
+import DemoPage from "./DemoPage/DemoPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -15,6 +16,7 @@ const router = createBrowserRouter(
       <Route index element={<HomePage />} />
       <Route path="/pricing" element={<PricingPage />} />
       <Route path="/about" element={<AboutPage />} />
+      <Route path="/demo" element={<DemoPage />} />
       <Route path="*" element={<ErrorPage />} />
     </Route>
   )

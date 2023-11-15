@@ -29,6 +29,10 @@
   .absolute-cover {
     @apply absolute w-full h-full top-0 left-0;
   }
+
+  .heading {
+    @apply font-lato text-3xl font-semibold;
+  }
 }
 
 @layer components {

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Demo() {
   return (
     <section className="mt-[30vh] mb-[15vh] gap-y-8 p-page flex flex-col items-center">
@@ -12,7 +14,9 @@ export default function Demo() {
         efficiency and excellence in financial endeavors.
       </p>
 
-      <button className="btn-1">Get live Demo</button>
+      <Link to="/demo" className="btn-1">
+        Get live Demo
+      </Link>
     </section>
   );
 }

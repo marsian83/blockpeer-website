@@ -39,11 +39,15 @@ export default function Navbar() {
         hidden ? "-translate-y-full" : "translate-y-0"
       )}
     >
-      <div className="text-xl flex-1 flex gap-x-3 items-center">
-        <Link to="/" className="duration-300 hover:scale-110">
-          <img src="/logo.svg" alt="BlockPeer logo" className="h-[2em]" />
+      <div className="text-xl flex-1">
+        <Link to="/" className="duration-300 group flex gap-x-3 items-center">
+          <img
+            src="/logo.svg"
+            alt="BlockPeer logo"
+            className="h-[2em] duration-inherit group-hover:scale-110 "
+          />
+          <img src="/brand.svg" alt="BlockPeer" className="h-[1em]" />
         </Link>
-        <img src="/brand.svg" alt="BlockPeer" className="h-[1em]" />
       </div>
 
       <div className="flex items-center gap-x-5 text-black">
@@ -52,11 +56,18 @@ export default function Navbar() {
         </NavDropdown.Container>
         <NavItem to="/about">About Us</NavItem>
         <NavItem to="/pricing">Pricing</NavItem>
-        <NavItem to="/blog">Blog</NavItem>
+        <NavItem
+          target="__"
+          to="https://medium.com/coinmonks/navigating-the-new-financial-landscape-understanding-crypto-wallets-and-blockpeers-innovative-e16e3ee3da5d"
+        >
+          Blog
+        </NavItem>
       </div>
 
       <div className="flex-1 flex justify-end items-center">
-        <button className="btn-1">Book Demo</button>
+        <Link to="/demo" className="btn-1">
+          Book Demo
+        </Link>
       </div>
     </nav>
   );
@@ -110,12 +121,14 @@ function FeaturesDropdown() {
 interface NavItemProps {
   children?: React.ReactNode;
   to: string;
+  target?: string;
 }
 
 function NavItem(props: NavItemProps) {
   return (
     <NavLink
       to={props.to}
+      target={props.target}
       className={({ isActive }) =>
         twMerge(
           "px-5 py-1",

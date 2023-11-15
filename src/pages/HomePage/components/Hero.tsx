@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import DataForm from "../../../common/DataForm";
 
 const chains = [
@@ -11,6 +12,8 @@ const chains = [
 ];
 
 export default function Hero() {
+  const navigate = useNavigate();
+
   return (
     <section className="bg-primary bg-opacity-5 h-[88vh] flex flex-col justify-center p-page">
       <div className="flex flex-1">
@@ -23,9 +26,15 @@ export default function Hero() {
             platform for Crypto Payments & Crypto/Fiat Accounting
           </p>
 
-          <DataForm.Container className="flex gap-x-4 self-start w-full">
+          <DataForm.Container
+            className="flex gap-x-4 self-start w-full"
+            onSubmit={(data) => {
+              navigate(`/demo?email=${data.email}`);
+            }}
+          >
             <DataForm.Input
               name="email"
+              type="email"
               className="bg-foreground bg-opacity-[8%] rounded-md text-lg px-2 py-1 placeholder:text-front placeholder:text-opacity-70 w-1/2"
               placeholder="Enter your email"
             />
