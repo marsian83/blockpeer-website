@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import DataForm from "../../../common/DataForm";
+import Dropdown from "../../../common/Dropdown";
 
 const chains = [
   "https://cryptologos.cc/logos/polygon-matic-logo.png",
@@ -35,9 +36,11 @@ export default function Hero() {
             <DataForm.Input
               name="email"
               type="email"
+              required
               className="bg-foreground bg-opacity-[8%] rounded-md text-lg px-2 py-1 placeholder:text-front placeholder:text-opacity-70 w-1/2"
               placeholder="Enter your email"
             />
+
             <DataForm.Input type="submit" className="btn-1" value="Book Demo" />
           </DataForm.Container>
         </div>
@@ -57,7 +60,7 @@ export default function Hero() {
         </h3>
         <div className="flex gap-x-6">
           {chains.map((chain, key) => (
-            <div className="rounded-full bg-background shadow p-2">
+            <div key={key} className="rounded-full bg-background shadow p-2">
               <img className="h-10 aspect-square" src={chain} key={key} />
             </div>
           ))}

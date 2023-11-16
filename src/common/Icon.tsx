@@ -3,6 +3,8 @@ import { twMerge } from "tailwind-merge";
 interface IconProps {
   icon: keyof typeof icons;
   className?: string;
+  style?: React.CSSProperties;
+  stroke?: string;
 }
 
 //Icons implementation by @marsian83 (https://github.com/marsian83)
@@ -14,7 +16,15 @@ export default function Icon(props: IconProps) {
         height="24"
         viewBox="0 -960 960 960"
         width="24"
-        className={twMerge("fill-current w-[1em] h-[1em]", props.className)}
+        className={twMerge(
+          "fill-current w-[1em] h-[1em]",
+          props.className,
+          props.stroke && "stroke-[0.83em] stroke-front text-transparent"
+        )}
+        style={{
+          ...props.style,
+          stroke: props.stroke,
+        }}
       >
         {icons[props.icon]}
       </svg>
