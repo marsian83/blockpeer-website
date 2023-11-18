@@ -78,3 +78,14 @@ export function getCoords(elem: HTMLElement) {
 
   return { top: Math.round(top), left: Math.round(left) };
 }
+
+export function splitArrayThirds<T>(arr: T[]): [T[], T[], T[]] {
+  const length = arr.length;
+  const third = Math.floor(length / 3);
+
+  const part1 = arr.slice(0, third);
+  const part2 = arr.slice(third, 2 * third);
+  const part3 = arr.slice(2 * third);
+
+  return [part1, part2, part3];
+}

@@ -41,7 +41,7 @@ export default function Problems() {
             </h5>
           ))}
         </div>
-        <p className="mt-14 font-lato font-medium">
+        <p className="mt-10 font-lato font-medium">
           BlockPeer introduces a one size fits all solution to all these
           problems
         </p>
