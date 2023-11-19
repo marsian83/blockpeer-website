@@ -11,7 +11,7 @@ export default function FeaturePage() {
   const { key } = useParams();
 
   const feature = features.filter((f) => f.key === key)[0];
-  if (!feature) return navigate("/feature/not-found");
+  if (!feature) navigate("/feature/not-found");
 
   return (
     <>
