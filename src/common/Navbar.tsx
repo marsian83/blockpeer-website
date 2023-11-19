@@ -90,7 +90,7 @@ function FeaturesDropdown() {
           description="Crypto invoices encrypted & stored in Tableland making it fully decentralized."
         />
         <NavDropdown.Item
-          link="/"
+          link="/feature/payments-in-crypto-for-all"
           icon="paid"
           title="Payments in Crypto"
           description="Automate employee onboarding and payroll with soulbound IDs and bulk payments."

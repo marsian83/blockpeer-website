@@ -1,4 +1,4 @@
-import Demo from "./components/Demo";
+import Demo from "../../common/Demo";
 import Hero from "./components/Hero";
 import Team from "./components/Team";
 import Vision from "./components/Vision";
